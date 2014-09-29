@@ -12,3 +12,5 @@ output to /dev/null. There will be lots of output to the screen.
 
 for production, edit demo2a.sh and use the python / hadoop line that outputs
 to /dev/null to suppress the tons of output
+
+to insert the table into hbase, use "hive -f mr2a_to_hbase.q "
