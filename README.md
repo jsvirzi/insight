@@ -28,7 +28,7 @@ filters out information unlikely to be part of the author''s scientific contribu
 - *Citation History* -- The documents for the author in question are scanned for citation history. 
 The documents must have less than 10 authors to be considered;
 documents with more than 10 authors are considered large collaborations.
-The citations arising from such a large collaboration would dilute the scientist''s actual contributions.
+The citations arising from such a large collaboration would dilute the actual contributions of the scientist.
 The citation dates are noted and histogrammed in bins corresponding to one month.
 For example, if an author''s work is cited on Jan 26, 2012 and Jan 2, 2012, 
 the entry corresponding to Jan-2012 will reflect those two citations.
@@ -41,6 +41,13 @@ The citation history below shows how often his works are cited per month, starti
 As is the case for *Citation History*, only documents with less than 10 authors are considered.
 All the co-authors from the selected documents are considered ''collaborators''.
 The frequency of collaboration is noted, indicating how many times the two authors have worked together.
+
+![Alt Text](https://github.com/jsvirzi/insight/blob/master/images/collaborators.png "Collaborators")
+
+- *Submissions* -- The documents that an author has contributed are listed.
+Only documents with less than 10 authors are considered.
+
+![Alt Text](https://github.com/jsvirzi/insight/blob/master/images/submissions.png "Submissions")
 
 ## The Data Pipeline
 
