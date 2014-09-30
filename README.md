@@ -37,13 +37,28 @@ This temporary database is eventually superceded by the database created during 
 The second real-time component is an on-demand query which will take process the information when the user clicks
 the ''submit'' button in the User Interface.
 
-The details of the data pipeline are as follows:
+# Batch 
+
+The details of the data pipeline for the batch process are as follows:
 
 - Kafka is used to collect data coming from RESTful API calls
-- A custom web crawler takes information from Kafka and tracks down (scrapes) information from additional web sites 
+- A custom web crawler harvests information from Kafka and scrapes additional information from different web-based databases
 (ADS, INSPIRE, etc.)
-- The relevant information is filtered and subsequently stored into HDFS
-- PIG is used to join databases stored in HDFS 
-- 
+- Relevant information is filtered and subsequently stored into HDFS
+- PIG is used to merge information from the different databases stored in HDFS 
+- MR Job Python scripts are used to process the different query variables using Map/Reduce algorithms
+- Hive is used to import the MapReduce jobs into HBase
+- Flask serves to query HBase and send the results as HTML/JavaScript pages to the browser
 
-# Batch 
+# Real-Time
+
+The real-time data pipeline shares the same data collection technology as the batch process,
+except that it has been implemented with STORM.
+- Kafka feeds the ''spouts''
+- The STORM ''bolts'' perform the scraping
+- The ''bolts'' use Happybase to deliver the results into HBase
+- Flask serves to query HBase and send the results as HTML/JavaScript pages to the browser
+
+# On-Demand
+
+The real-time data pipeline can be used to service on-demand queries via the user interface
