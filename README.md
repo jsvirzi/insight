@@ -78,7 +78,7 @@ The details of the data pipeline for the batch process are as follows:
 - Hive is used to import the MapReduce jobs into HBase
 - Flask serves to query HBase and send the results as HTML/JavaScript pages to the browser
 
-# Real-Time
+## Real-Time
 
 The real-time data pipeline shares the same data collection technology as the batch process,
 except that it has been implemented with STORM.
