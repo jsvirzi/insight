@@ -62,3 +62,6 @@ except that it has been implemented with STORM.
 # On-Demand
 
 The real-time data pipeline can be used to service on-demand queries via the user interface
+
+![Alt Text](https://github.com/jsvirzi/insight/blob/master/images/generic_ui_ondemand.png "Query implementing On-Demand Data Acquisition")
+
