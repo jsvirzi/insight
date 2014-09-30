@@ -21,6 +21,23 @@ The citation profile is very different in both cases; **Trackademix** allows us 
 [NASA ADS](http://adsabs.harvard.edu) databases, 
 filters out information unlikely to be part of the author''s scientific contributions history
 
+## The Query Variables
+
+**TrackademiX** provides the following variables for querying.
+
+- *Citation History* -- The documents for the author in question are scanned for citation history. 
+The documents must have less than 10 authors to be considered;
+documents with more than 10 authors are considered large collaborations.
+The citations arising from such a large collaboration would dilute the scientist''s actual contributions.
+The citation dates are noted and histogrammed in bins corresponding to one month.
+For example, if an author''s work is cited on Jan 26, 2012 and Jan 2, 2012, 
+the entry corresponding to Jan-2012 will reflect those two citations.
+
+- *Collaborators* -- The documents for the author in question are scanned for co-authors.
+As is the case for *Citation History*, only documents with less than 10 authors are considered.
+All the co-authors from the selected documents are considered ''collaborators''.
+The frequency of collaboration is noted, indicating how many times the two authors have worked together.
+
 ## The Data Pipeline
 
 ![Alt Text](https://github.com/jsvirzi/insight/blob/master/images/pipeline.png "Data Pipeline")
@@ -34,7 +51,7 @@ The pipeline has two real-time components, both of which use STORM to process th
 The first real-time component scans the ArXiv records for recent activity,
 and performs informational updates to a temporary database.
 This temporary database is eventually superceded by the database created during the batch processing.
-The second real-time component is an on-demand query which will take process the information when the user clicks
+The second real-time component is an on-demand query which will process the information when the user clicks
 the ''submit'' button in the User Interface.
 
 # Batch 
@@ -54,7 +71,7 @@ The details of the data pipeline for the batch process are as follows:
 
 The real-time data pipeline shares the same data collection technology as the batch process,
 except that it has been implemented with STORM.
-- Kafka feeds the ''spouts''
+- Kafka feeds the STORM ''spouts''
 - The STORM ''bolts'' perform the scraping
 - The ''bolts'' use Happybase to deliver the results into HBase
 - Flask serves to query HBase and send the results as HTML/JavaScript pages to the browser
