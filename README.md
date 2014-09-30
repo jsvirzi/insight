@@ -49,7 +49,7 @@ Only documents with less than 10 authors are considered.
 
 ![Alt Text](https://github.com/jsvirzi/insight/blob/master/images/publications.png "Submissions")
 
-## The Data Pipeline
+# The Data Pipeline
 
 ![Alt Text](https://github.com/jsvirzi/insight/blob/master/images/pipeline.png "Data Pipeline")
 
@@ -65,7 +65,7 @@ This temporary database is eventually superceded by the database created during 
 The second real-time component is an on-demand query which will process the information when the user clicks
 the ''submit'' button in the User Interface.
 
-# Batch 
+## Batch 
 
 The details of the data pipeline for the batch process are as follows:
 
@@ -87,7 +87,7 @@ except that it has been implemented with STORM.
 - The ''bolts'' use Happybase to deliver the results into HBase
 - Flask serves to query HBase and send the results as HTML/JavaScript pages to the browser
 
-# On-Demand
+## On-Demand
 
 The real-time data pipeline can be used to service on-demand queries via the user interface
 
