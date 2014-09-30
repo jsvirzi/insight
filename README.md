@@ -47,7 +47,7 @@ The frequency of collaboration is noted, indicating how many times the two autho
 - *Submissions* -- The documents that an author has contributed are listed.
 Only documents with less than 10 authors are considered.
 
-![Alt Text](https://github.com/jsvirzi/insight/blob/master/images/submissions.png "Submissions")
+![Alt Text](https://github.com/jsvirzi/insight/blob/master/images/publications.png "Submissions")
 
 ## The Data Pipeline
 
