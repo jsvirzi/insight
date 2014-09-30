@@ -32,6 +32,10 @@ The citations arising from such a large collaboration would dilute the scientist
 The citation dates are noted and histogrammed in bins corresponding to one month.
 For example, if an author''s work is cited on Jan 26, 2012 and Jan 2, 2012, 
 the entry corresponding to Jan-2012 will reflect those two citations.
+The next image shows the visualization of the citation history for the reknown physicist, Stephen Hawking. 
+The citation history below shows how often his works are cited per month, starting from 1992 until 2014.
+
+![Alt Text](https://github.com/jsvirzi/insight/blob/master/images/citations_ui.png "Citations")
 
 - *Collaborators* -- The documents for the author in question are scanned for co-authors.
 As is the case for *Citation History*, only documents with less than 10 authors are considered.
