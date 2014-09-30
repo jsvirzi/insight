@@ -25,3 +25,25 @@ filters out information unlikely to be part of the author''s scientific contribu
 
 ![Alt Text](https://github.com/jsvirzi/insight/blob/master/images/pipeline.png "Data Pipeline")
 
+The pipeline has a batch component, which is intended to be processed weekly (specifically on Sunday).
+The batch processing retrieves metadata information from the ArXiv via a REST API.
+If recent works have cited older works, the records are updated in our database.
+The batch component is intended to have eventual consistency on a *weekly* timescale.
+
+The pipeline has two real-time components, both of which use STORM to process the requests.
+The first real-time component scans the ArXiv records for recent activity,
+and performs informational updates to a temporary database.
+This temporary database is eventually superceded by the database created during the batch processing.
+The second real-time component is an on-demand query which will take process the information when the user clicks
+the ''submit'' button in the User Interface.
+
+The details of the data pipeline are as follows:
+
+- Kafka is used to collect data coming from RESTful API calls
+- A custom web crawler takes information from Kafka and tracks down (scrapes) information from additional web sites 
+(ADS, INSPIRE, etc.)
+- The relevant information is filtered and subsequently stored into HDFS
+- PIG is used to join databases stored in HDFS 
+- 
+
+# Batch 
