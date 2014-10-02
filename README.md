@@ -1,7 +1,7 @@
 Trackademix
 ===========
 
-[Trackademix](http://trackademix.com) was developed as my project for [Insight Data Science](http://insightdataengineering.com) September through October 2014.
+[Trackademix](http://trackademix.com) was developed as a project for [Insight Data Science](http://insightdataengineering.com) September through October 2014.
 
 ## Intro
 
@@ -89,7 +89,9 @@ except that it has been implemented with STORM.
 
 ## On-Demand
 
-The real-time data pipeline can be used to service on-demand queries via the user interface
+The real-time data pipeline can be used to service on-demand queries via the user interface.
+The information is processed from scratch.
+Note this can take a long time to process due to latencies in html page requests from external websites.
 
 ![Alt Text](https://github.com/jsvirzi/insight/blob/master/images/generic_ui_ondemand.png "Query implementing On-Demand Data Acquisition")
 
