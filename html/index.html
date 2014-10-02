@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<link rel="stylesheet" href="Flat-UI-master/dist/css/flat-ui.css">
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+<title>TrackademiX UI Interface</title>
+
+</head>
+
+<body>
+
+ <!-- Static navbar -->
+    <div class="navbar navbar-default navbar-static-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">TrackademiX</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="presentation.html">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+<!--
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li class="dropdown-header">Nav header</li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li>
+              </ul>
+            </li>
+-->
+          </ul>
+<!--
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="../navbar/">Default</a></li>
+            <li class="active"><a href="./">Static top</a></li>
+            <li><a href="../navbar-fixed-top/">Fixed top</a></li>
+          </ul>
+-->
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+<div class="container">
+
+<div class="jumbotron">
+	<div class="row">
+
+	<form method="GET" action="http://ec2-54-183-207-177.us-west-1.compute.amazonaws.com:5000/mrX" target="display">
+		<input class="btn btn-info btn-xs" name="submit" type="submit" value="author">
+		<input name="author" type="text" placeholder="author">
+		<input name="query" type="radio" value="citations"> Citation History 
+		<input name="query" type="radio" value="collaborators" checked> Collaborators
+		<input name="query" type="radio" value="submissions"> Submissions 
+	</form>
+
+	<form method="GET" action="http://ec2-54-68-15-103.us-west-2.compute.amazonaws.com:5000/rtquery/" target="display">
+		<input class="btn btn-info btn-xs" name="submit" type="submit" value="author">
+		<input name="author" type="text" placeholder="author">
+		<input name="query" type="radio" value="citations"> Citation History (on-demand)
+	</form>
+
+	<form method="GET" action="http://ec2-54-183-207-177.us-west-1.compute.amazonaws.com:5000/mrX" target="display">
+		<input class="btn btn-info btn-xs" name="submit" type="submit" value="ArXiv record">
+		<input name="query" type="hidden" value="authors">
+		<input name="arxiv_id" type="text" placeholder="hep-ph/0612015 / 1111.2222">
+	</form>
+
+	</div>
+
+</div>
+
+<iframe name="display" width="100%" height="900px" frameborder="0">
+</iframe>
+</div>
+<!--
+<frameset rows="15%,85%" border="0">
+<frame name="main" src="xxx.html">
+<frame name="display">
+</frameset>
+-->
+
+</body>
+</html>
