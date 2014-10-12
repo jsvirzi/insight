@@ -96,7 +96,7 @@ def mr1(author):
 @app.route('/mr2/', methods=['GET'])
 def mr2(arxiv_id):
     connection = happybase.Connection('localhost') 
-    table = connection.table('jsvirzi_mr2_hbase') 
+    table = connection.table('jsvirzi_mr2a_hbase') 
     arxiv_id = arxiv_id.replace('%20', ' ')
     row = table.row('"' + arxiv_id + '"') 
     my_str = row['metadata:field'] 
@@ -106,6 +106,8 @@ def mr2(arxiv_id):
     print my_str
     docs = json.loads(my_str)
     authors = docs['author']
+    abstract = docs['abstract']
+    title = docs['title']
     n = len(authors)
     date = docs['date']
     print 'length = %d' % n
@@ -115,6 +117,8 @@ def mr2(arxiv_id):
     html += '<head><title>mr3</title></head>\n'
     html += '<body>\n'
     html += '<table border="0">\n'
+    html += '<h1>Title: </h1><p style="font-size:25px">' + title + '</p>\n<br>'
+    html += '<h1>Abstract:</h1><p style="font-size:25px">' + abstract + '</p>\n<br>' 
     html += '<tr>\n'
     html += '<th>Document</th>\n'
     html += '<th>Date</th>\n'
