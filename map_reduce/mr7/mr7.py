@@ -18,7 +18,7 @@ class MRWordFrequencyCount(MRJob):
         self.fpm.close()
 
     def reducer_init(self):
-        self.rofile = '/home/ubuntu/jsvirzi/insight/map_reduce/mr7/reduce.out'
+        self.rofile = '/home/ubuntu/jsvirzi/insight/map_reduce/mr7/reducer.out'
         self.fpr = open(self.rofile, 'w')
 
     def reducer_final(self):
@@ -45,12 +45,25 @@ class MRWordFrequencyCount(MRJob):
             self.fpm = open(self.mofile, 'a')
             print 'processing line %d' % self.map_total
 
-        docs1 = json.loads(tline)
-        collaborators1 = docs1['collaborators']
-        author = docs1['author']
-        collaborators1.append(author)
-        n = len(collaborators1)
-        if 2 <= n and n <= 10:
+        docs0 = json.loads(tline)
+        authors = docs0['authors']
+        n = len(authors)
+        if n > 10:
+            return
+
+        for author in authors:
+            # author = 'Virzi J.'
+            row = self.table.row('"' + author + '"')
+            try:
+                tline = row['metadata:field']
+                tline = tline[1:-1]
+                tline = tline.replace('\\"', '"')
+            except:
+                continue
+            docs1 = json.loads(tline)
+            collaborators1 = docs1['collaborators']
+            tmp_author = docs1['author']
+            collaborators1.append(tmp_author)
             for collaborator1 in collaborators1: 
                 # print 'collaborator 1 = ' + collaborator1
                 row = self.table.row('"' + collaborator1 + '"')
@@ -60,18 +73,16 @@ class MRWordFrequencyCount(MRJob):
                     tline = tline.replace('\\"', '"')
                 except:
                     continue
-
-                # print 'stage2 = [' + tline + ']'
                 docs2 = json.loads(tline)
                 collaborators2 = docs2['collaborators']
-                author = docs2['author']
-                collaborators2.append(author)
+                tmp_author = docs2['author']
+                collaborators2.append(tmp_author)
                 for collaborator2 in collaborators2: 
-                    if collaborator1 != collaborator2:
-                        # print 'yield: [' + collaborator1 + '] with value: [' + collaborator2 + ']'
-			# n = input('hello')
-                        self.fpm.write(collaborator1 + '\t' + collaborator2 + '\n')
-                        yield collaborator1, collaborator2 
+                    if author != collaborator2:
+                        # print 'YIELD: ' + author + ' ' + collaborator2
+                        yield author, collaborator2
+
+        return
 
     def reducer(self, key, values):
 
